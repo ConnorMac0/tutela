@@ -1,7 +1,7 @@
 {
   "name": "tutela",
   "homepage": "https://connormac0.github.io/tutela/",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
