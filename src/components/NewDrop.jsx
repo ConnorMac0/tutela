@@ -38,8 +38,8 @@ function NewDrop() {
         <div>
             <Wrapper>
                 <Product>
-                    <img src="src/assets/dropcover/ronan.png" alt="" />
-                    <img src="src/assets/dropcover/ronan2.png" alt="" />
+                    <img src="./assets/dropcover/ronan.png" alt="" />
+                    <img src="./assets/dropcover/ronan2.png" alt="" />
                 </Product>
             </Wrapper>
             <Spacer>
