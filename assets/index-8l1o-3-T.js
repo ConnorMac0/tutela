@@ -130,7 +130,7 @@ Error generating stack: `+o.message+`
     padding: 20px;
     text-align: center;
     justify-content: center;
-`;function DS(){return H.jsxs($S,{children:[H.jsxs("p",{className:"text-sm mt-2 text-grey-900",children:["© ",new Date().getFullYear()," Tutela. All Rights Reserved."]}),H.jsx("p",{className:"text-sm mt-2 text-grey-900",children:"Website Designed and Maintained By Connor Maclachlan."})]})}const AS=Ke.div`
+`;function DS(){return H.jsxs($S,{children:[H.jsxs("p",{className:"text-sm mt-2 text-grey-900",children:["© ",new Date().getFullYear()," Tutela. All Rights Reserved."]}),H.jsx("p",{className:"text-sm mt-2 text-grey-900",children:"Website Designed By Connor Maclachlan."})]})}const AS=Ke.div`
   background-color: #C9BDAC;
   font-family: Oswald;
 `;function bS(){return H.jsx(AS,{children:H.jsxs(O0,{children:[H.jsx(L0,{}),H.jsxs(y0,{children:[H.jsx(qi,{path:"/tutela/",element:H.jsx(zS,{})}),H.jsx(qi,{path:"/shop/",element:H.jsx(IS,{})}),H.jsx(qi,{path:"/cart/",element:H.jsx(MS,{})})]}),H.jsx(DS,{})]})})}ru.createRoot(document.getElementById("root")).render(H.jsx(fn.StrictMode,{children:H.jsx(bS,{})}));
