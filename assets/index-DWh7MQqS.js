@@ -96,7 +96,7 @@ Error generating stack: `+o.message+`
       }
 
     @media (max-width: 600px) {
-        max-height: 200px;
+        max-height: 150px;
     }
 `,CS=Ke.div`
     margin: 0 auto;
