@@ -1,14 +1,14 @@
 import React from "react";
 
 
-function GalleryItem({ title, imgUrl, price, link }) {
+function ShopItem({ title, imgUrl, price, link }) {
     return (
         <a href={link}
             target="_blank"
             rel="noopener noreferer"
             className="overflow-hidden">
             <img src={imgUrl}
-                 alt="gallery item"
+                 alt="shop item"
                  className="w-full h-36 md:h-48 object-cover cursor-pointer"
             />
             <div className="w-full p-4">
@@ -25,4 +25,4 @@ function GalleryItem({ title, imgUrl, price, link }) {
     )
 }
 
-export default PortfolioItem;
+export default ShopItem;

@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
     display: flex;
-    font-family: Oswald;
     font-weight: bold;
     background-color: #C9BDAC;
     justify-content: space-between;
@@ -31,11 +31,11 @@ function Header() {
     return(
         <StyledHeader>
             <StyledNav>
-                <a href="/shop">SHOP</a>
+                <Link to='/shop/'>SHOP</Link>
             </StyledNav>
-            <StyledLogo href="/">TUTELA</StyledLogo>
+            <StyledLogo href="/tutela/">TUTELA</StyledLogo>
             <StyledNav>
-                <a href="/cart">CART (0)</a>
+                <Link to="/cart/">CART (0)</Link>
             </StyledNav>
         </StyledHeader>
     )

@@ -1,14 +1,19 @@
 import React from "react";
+import DropGallery from "./DropGallery";
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    align-items: center;
+    display: flex;
+    justify-content: center;
+`;
+
+const Cover = styled.div`
     display: flex;
 `;
 
-const Product = styled.div`
-    display: flex;
-    max-width: 50%;
+const CoverImg = styled.img`
+    max-width: 100%;
+    height: auto;
 `;
 
 const Desc = styled.button`
@@ -27,24 +32,29 @@ const Desc = styled.button`
 
 const Spacer = styled.div`
     padding: 10px;
-    font-family: Oswald;
-    background-color: #C9BDAC;
     display: flex;
     justify-content: center;
 `;
 
 function NewDrop() {
+    const images = [
+        "./assets/dropgalllery/andy1.png",
+        "./assets/dropgalllery/andy2.png",
+        "./assets/dropgalllery/ronan2.png",
+        "./assets/dropgalllery/ronan3.png",
+        "./assets/dropgalllery/ronan4.png",
+      ]
     return(
         <div>
             <Wrapper>
-                <Product>
-                    <img src="./assets/dropcover/ronan.png" alt="" />
-                    <img src="./assets/dropcover/ronan2.png" alt="" />
-                </Product>
+                <Cover>
+                    <CoverImg src="./assets/dropcover/ronan.png" alt="" />
+                </Cover>
             </Wrapper>
             <Spacer>
-                <Desc className="cust-btn">SHOP S/24</Desc>
+                <Desc>SHOP SPRING/24</Desc>
             </Spacer>
+            <DropGallery images={images}/>
         </div>
     )
 }

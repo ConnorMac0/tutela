@@ -1,11 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
 
-const Gallery = ({ images }) => {
+function Shop() {
 
     return(
-        <div>Gallery</div>
+        <div>Shop</div>
     )
 }
 
-export default Gallery;
+export default Shop;
