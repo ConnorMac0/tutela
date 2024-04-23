@@ -94,10 +94,14 @@ Error generating stack: `+o.message+`
     @media (max-width: 768px) {
         max-height: 220px;
       }
+
+    @media (max-width: 600px) {
+        max-height: 200px;
+    }
 `,CS=Ke.div`
     margin: 0 auto;
     jusify-items: center;
-    width: 92%;
+    width: 90%;
 `;function PS({images:e}){var t={dots:!0,infinite:!0,speed:500,slidesToShow:5,slidesToScroll:1,responsive:[{breakpoint:768,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:1e3,settings:{slidesToShow:4,slidesToScroll:1}}]};return H.jsx(CS,{children:H.jsx(OS,{...t,children:e.map((n,r)=>H.jsx(xS,{children:H.jsx("img",{src:n,alt:`Slide ${r+1}`})},r))})})}const TS=Ke.div`
     display: flex;
     justify-content: center;
