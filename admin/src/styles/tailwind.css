@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "migha";
+    font-style: normal;
+    font-weight: normal;
+    src: url('./src/assets/fonts/Migha Display/Expanded/Migha-BoldExpanded.otf') format('opentype');
+}
