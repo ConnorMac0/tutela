@@ -8,3 +8,7 @@
     font-weight: normal;
     src: url('./src/assets/fonts/Migha Display/Expanded/Migha-BoldExpanded.otf') format('opentype');
 }
+
+.active{
+    background-color: '#FFFFF0';
+}

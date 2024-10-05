@@ -4,13 +4,13 @@ import Dashboard from './pages/Dashboard';
 import Add from './pages/Add';
 import List from './pages/List';
 import Orders from './pages/Orders';
-import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 
 function App() {
 
   return (
-    <div className='md:flex md:flex-row bg-ivory text-black'>
-      <Navbar />
+    <div className='md:flex md:flex-row bg-ivory text-black min-h-screen'>
+      <Sidebar />
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/add' element={<Add />} />
