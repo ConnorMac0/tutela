@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
-        <div className="flex md:flex-col bg-green md:min-h-screen md:w-1/6 justify-between">
+        <div className="flex md:flex-col bg-green md:min-h-screen md:w-1/6 justify-between border-r-2 border-green">
             <div className="w-full">
                 <div className="flex text-4xl font-brand p-2 w-full justify-center md:bg-ivory">TUTELA</div>
                 <div className="hidden md:flex flex-col w-full my-5">

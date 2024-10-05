@@ -3,7 +3,6 @@ import React from "react";
 const Dashboard = () => {
     return (
         <div className="flex flex-col min-h-screen w-full border-2 border-orange-600">
-            <div></div>
             <div className="text-2xl p-4 border-2 border-yellow-600">Dashboard</div>
             <div className="flex flex-wrap gap-5 text-white justify-center p-5">
                 <div className="bg-stone-600 h-48 w-full">Box</div>

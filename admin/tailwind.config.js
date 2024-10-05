@@ -6,7 +6,6 @@ export default {
       colors: {
         'green': '#45552D',
         'ivory': '#FFFFF0',
-        'dark-green': '#45550F'
       },
       fontFamily: {
         brand: ['migha'],
