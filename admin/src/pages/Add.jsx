@@ -79,7 +79,7 @@ const Add = ({token}) => {
                                 </div>
                                 : <img className="size-40 md:size-64 object-scale-down" src={URL.createObjectURL(image2)} alt="" />
                             }
-                            <input onChange={(e) => setImage2(e.target.files[0])} type="file" id="image2" hidden required />
+                            <input onChange={(e) => setImage2(e.target.files[0])} type="file" id="image2" hidden/>
                         </label>
                     </div>
                 </div>

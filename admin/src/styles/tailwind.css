@@ -10,6 +10,12 @@
     src: url('./src/assets/fonts/Migha Display/Expanded/Migha-BoldExpanded.otf') format('opentype');
 }
 
+hr{
+    background-color: #45552D;
+    height: 2px;
+    border: none;
+}
+
 .active{
     background-color: #FFFFF0;
 }
