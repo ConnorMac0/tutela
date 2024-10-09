@@ -9,6 +9,10 @@ export default {
       },
       fontFamily: {
         brand: ['migha'],
+        main: ['Lato']
+      },
+      minHeight: {
+        'custom': 'calc(100vh - 56px)',
       },
     },
   },

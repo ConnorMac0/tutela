@@ -21,14 +21,14 @@ function App() {
   },[token])
 
   return (
-    <div className='bg-ivory text-black min-h-screen'>
+    <div className='bg-ivory text-black min-h-screen font-main'>
       <ToastContainer />
       {token === ""
         ? <Login setToken={setToken}/>
         :
         <>
           <Navbar setToken={setToken}/>
-          <div className='flex w-full'>
+          <div className='flex md:min-h-custom w-full'>
             <Sidebar />
             <div className='w-full md:w-[82%] p-5'>
               <Routes>
