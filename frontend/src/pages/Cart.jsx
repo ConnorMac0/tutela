@@ -25,7 +25,7 @@ const Cart = () => {
   },[cartItems])
 
   return getCartCount() ? (
-    <div className='bg-ivory min-h-custom'>
+    <div className='bg-ivory min-h-full'>
       {cartData.map((item, index)=>{
 
         const productData = products.find((product)=> product._id === item._id);

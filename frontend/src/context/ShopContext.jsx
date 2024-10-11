@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const addToCart = async (itemId,size) => {
         let cartData = structuredClone(cartItems);
@@ -99,10 +100,15 @@ const ShopContextProvider = (props) => {
         getProductData();
     },[])
 
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     const value = {
         products, currency, delivery_fee,cartItems, 
         addToCart, getCartCount, removeItem,
-        getCartTotal, navigate, backendURL
+        getCartTotal, navigate, backendURL,
+        toggleMenu, isOpen
     }
 
     return (

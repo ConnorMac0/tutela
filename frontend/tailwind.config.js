@@ -12,7 +12,7 @@ export default {
         brand: ['migha'],
       },
       minHeight: {
-        'custom': 'calc(100vh - 173px)',
+        'custom': 'calc(100vh - 156px)',
       },
       height: {
         'custom': 'calc(100vh - 173px)',

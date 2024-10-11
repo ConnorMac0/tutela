@@ -4,17 +4,17 @@ import { ShopContext } from '../context/ShopContext'
 
 function Navbar() {
 
-    const {getCartCount} = useContext(ShopContext);
+    var { getCartCount, toggleMenu, isOpen } = useContext(ShopContext);
 
     return (
-        <div className='flex border-b-2 border-ivory items-center mx-auto my-0 justify-center pt-5 pb-2 sticky top-0 bg-green text-ivory md:justify-between'>
-            <ul className='hidden flex text-lg gap-5 pl-20 md:block large:block hover:text-gray-800 hover:cursor-pointer'>
-                <li><NavLink to='/shop'>SHOP</NavLink></li>
-            </ul>
-            <div className='text-6xl font-brand'><NavLink to='/'>TUTELA</NavLink></div>
-            <ul className='hidden flex text-lg gap-5 pr-20 md:block large:block hover:text-gray-800 hover:cursor-pointer'>
-                <li><NavLink to='/cart'>CART({getCartCount()})</NavLink></li>
-            </ul>
+        <div className='flex justify-center md:justify-between bg-green text-ivory items-center pt-4 pb-3 border-b-2 border-ivory sticky top-0'>
+            <div className='hidden md:flex w-1/3 justify-left pl-8'>
+                <button onClick={toggleMenu}>
+                    {!isOpen ? "MENU" : "CLOSE"}
+                </button>
+            </div>
+            <NavLink className='w-full md:w-1/3 font-brand text-5xl justify-center flex' onClick={()=>isOpen = false} to='/'>TUTELA</NavLink>
+            <div className='hidden md:flex w-1/3 justify-end pr-8'><NavLink to='/cart'>CART({getCartCount()})</NavLink></div>
         </div>
     )
 }
