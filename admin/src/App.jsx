@@ -9,6 +9,8 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const currency = '$';
@@ -21,24 +23,34 @@ function App() {
     localStorage.setItem('token', token)
   },[token])
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <div className='bg-ivory text-black min-h-screen font-main'>
+    <div className='bg-ivory text-black font-main'>
       <ToastContainer />
       {token === ""
         ? <Login setToken={setToken}/>
         :
         <>
-          <Navbar setToken={setToken}/>
-          <div className='flex md:min-h-custom w-full'>
-            <Sidebar />
-            <div className='w-full md:w-[82%] p-5'>
-              <Routes>
-                <Route path='/' element={<Dashboard token={token}/>} />
-                <Route path='/add' element={<Add token={token}/>} />
-                <Route path='/products' element={<List token={token}/>} />
-                <Route path='/orders' element={<Orders token={token}/>} />
-              </Routes>
+          <Menu isOpen={isOpen} toggleMenu={toggleMenu} setToken={setToken}/>
+          <div>
+            <Navbar setToken={setToken}/>
+            <div className='flex min-h-mobile md:min-h-desktop w-full'>
+              <Sidebar />
+              <div className='w-full md:w-[82%] p-5'>
+                <Routes>
+                  <Route path='/' element={<Dashboard token={token}/>} />
+                  <Route path='/add' element={<Add token={token}/>} />
+                  <Route path='/products' element={<List token={token}/>} />
+                  <Route path='/orders' element={<Orders token={token}/>} />
+                </Routes>
+              </div>
             </div>
+            <Footer isOpen={isOpen} toggleMenu={toggleMenu}/>
           </div>
         </>}
     </div>

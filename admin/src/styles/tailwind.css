@@ -16,7 +16,9 @@ hr{
     border: none;
 }
 
-.active{
-    background-color: #FFFFF0;
-}
+@media (min-width: 768px) {
+    .active {
+      background-color: #FFFFF0; /* Change background to white on medium screens */
+    }
+  }
 

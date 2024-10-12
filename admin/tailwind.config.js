@@ -12,7 +12,8 @@ export default {
         main: ['Lato']
       },
       minHeight: {
-        'custom': 'calc(100vh - 56px)',
+        'mobile': 'calc(100vh - 122px)',
+        'desktop': 'calc(100vh - 84px)',
       },
     },
   },
