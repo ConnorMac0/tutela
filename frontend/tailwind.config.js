@@ -15,10 +15,10 @@ export default {
         'custom': 'calc(100vh - 156px)',
       },
       height: {
-        'custom': 'calc(100vh - 173px)',
+        'custom': 'calc(100vh - 156px)',
       },
       maxHeight: {
-        'custom': 'calc(100vh - 173px)',
+        'custom': 'calc(100vh - 156px)',
       }
     },
   },

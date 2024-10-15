@@ -4,7 +4,7 @@ import { ShopContext } from '../context/ShopContext'
 
 function Navbar() {
 
-    var { getCartCount, toggleMenu, isOpen } = useContext(ShopContext);
+    const { getCartCount, toggleMenu, isOpen } = useContext(ShopContext);
 
     return (
         <div className='flex justify-center md:justify-between bg-green text-ivory items-center pt-4 pb-3 border-b-2 border-ivory sticky top-0'>
@@ -13,7 +13,7 @@ function Navbar() {
                     {!isOpen ? "MENU" : "CLOSE"}
                 </button>
             </div>
-            <NavLink className='w-full md:w-1/3 font-brand text-5xl justify-center flex' onClick={()=>isOpen = false} to='/'>TUTELA</NavLink>
+            <NavLink className='w-full md:w-1/3 font-brand text-5xl justify-center flex' onClick={()=>toggleMenu()} to='/'>TUTELA</NavLink>
             <div className='hidden md:flex w-1/3 justify-end pr-8'><NavLink to='/cart'>CART({getCartCount()})</NavLink></div>
         </div>
     )

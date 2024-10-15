@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
 
-    var {isOpen} = useContext(ShopContext);
+    const {isOpen, toggleMenu} = useContext(ShopContext);
 
     return (
         <div className='text-sm'>
@@ -13,10 +13,10 @@ const Menu = () => {
                 isOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}>
                     <div className='flex flex-col gap-5 pl-8 pt-[110px]'>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
                     </div>
                 </div>
             </div>
@@ -25,10 +25,10 @@ const Menu = () => {
                 isOpen ? 'translate-y-96' : 'translate-y-full'
                 }`}>
                     <div className='flex flex-col gap-5 pl-8 pt-6'>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
-                        <NavLink onClick={()=>isOpen = false} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
+                        <NavLink onClick={()=>toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ import PlaceOrder from './pages/PlaceOrder'
 import Orders from './pages/Orders'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Login from './pages/Login'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Menu from './components/Menu'
@@ -17,10 +18,10 @@ import Menu from './components/Menu'
 function App() {
 
   return (
-    <div className='bg-ivory font-main text-black'>
+    <div className='bg-ivory font-main text-black min-h-custom'>
       <ToastContainer />
       <Menu />
-      <div className=''> 
+      <div> 
         <Navbar />
         <div className='min-h-custom'>
           <Routes>
@@ -33,6 +34,7 @@ function App() {
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/place-order' element={<PlaceOrder/>}/>
             <Route path='/orders' element={<Orders/>}/>
+            <Route path='/login' element={<Login/>}/>
           </Routes>
         </div>
         <Footer/>
