@@ -4,7 +4,7 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-  const { products, currency, cartItems, removeItem, getCartCount, navigate } = useContext(ShopContext);
+  const { products, currency, cartItems, removeItem, getCartCount } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(()=>{

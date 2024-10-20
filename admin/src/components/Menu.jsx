@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from 'react-router-dom'
 
-const Menu = ({isOpen, toggleMenu, setToken}) => {
+const Menu = ({isOpen, toggleMenu, logout}) => {
 
     return (
         <div className='flex md:hidden'>
@@ -17,7 +17,7 @@ const Menu = ({isOpen, toggleMenu, setToken}) => {
                 </div>
                 <div className="flex justify-center pt-5">
                     <button onClick={()=>{
-                        setToken('')
+                        logout();
                         toggleMenu()
                         }} className=""><i className="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>

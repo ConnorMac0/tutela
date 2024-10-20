@@ -29,6 +29,11 @@ function App() {
     setIsOpen(!isOpen);
   }
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken('');
+  }
+
   return (
     <div className='bg-ivory text-black font-main'>
       <ToastContainer />
@@ -36,9 +41,9 @@ function App() {
         ? <Login setToken={setToken}/>
         :
         <>
-          <Menu isOpen={isOpen} toggleMenu={toggleMenu} setToken={setToken}/>
+          <Menu isOpen={isOpen} toggleMenu={toggleMenu} setToken={logout}/>
           <div>
-            <Navbar setToken={setToken}/>
+            <Navbar setToken={logout}/>
             <div className='flex min-h-mobile md:min-h-desktop w-full'>
               <Sidebar />
               <div className='w-full md:w-[82%] p-5'>
