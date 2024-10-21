@@ -4,7 +4,7 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-  const { products, currency, cartItems, removeItem, getCartCount } = useContext(ShopContext);
+  const { products, currency, cartItems, removeItem, getCartCount, navigate } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(()=>{
@@ -45,7 +45,7 @@ const Cart = () => {
       <div className=''>
         <CartTotal/>
         <div className='flex w-full p-5 justify-center items-center align-items text-ivory'>
-                <a href='https://buy.stripe.com/test_5kA9Bn1KbgkW92wfYY' className='px-6 py-2 bg-green rounded-full'>Proceed to Checkout</a>
+                <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green rounded-full'>Proceed to Checkout</button>
             </div>
         </div>
     </div>
