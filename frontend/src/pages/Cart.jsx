@@ -45,7 +45,7 @@ const Cart = () => {
       <div className=''>
         <CartTotal/>
         <div className='flex w-full p-5 justify-center items-center align-items text-ivory'>
-                <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green rounded-full'>Proceed to Checkout</button>
+                <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green rounded-full'>Checkout</button>
             </div>
         </div>
     </div>

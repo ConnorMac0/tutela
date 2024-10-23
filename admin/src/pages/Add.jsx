@@ -85,16 +85,16 @@ const Add = ({token}) => {
                 </div>
                 <div className="w-full mb-2">
                     <p className="mb-2">Product Name</p>
-                    <input onChange={(e) => setName(e.target.value)} value={name} className="w-full border border-stone-800 p-2" type="text" placeholder="Type here" required />
+                    <input onChange={(e) => setName(e.target.value)} value={name} className="w-full border border-stone-800 p-2 rounded-none" type="text" placeholder="Type here" required />
                 </div>
                 <div className="w-full mb-2">
                     <p className="mb-2">Product Description</p>
-                    <textarea onChange={(e) => setDesc(e.target.value)} value={description} className="border border-stone-800 p-2 w-full" type="" placeholder="Write content here" required />
+                    <textarea onChange={(e) => setDesc(e.target.value)} value={description} className="border border-stone-800 p-2 w-full rounded-none" type="" placeholder="Write content here" required />
                 </div>
                 <div className="flex flex-row items-center gap-5 mb-4">
                     <div className="w-full">
                         <p className="mb-2">Product Size</p>
-                        <select onChange={(e) => setSize(e.target.value)} value={size} className="w-full border border-stone-800 p-2" required>
+                        <select onChange={(e) => setSize(e.target.value)} value={size} className="w-full border border-stone-800 p-2 rounded-none" required>
                             <option value="">Select Size</option>
                             <option value="S">Small</option>
                             <option value="M">Medium</option>
@@ -104,7 +104,7 @@ const Add = ({token}) => {
                     </div>
                     <div className="w-full">
                         <p className="mb-2">Product Price</p>
-                        <input onChange={(e) => setPrice(e.target.value)} value={price} className="w-full border border-stone-800 p-2" type="number" placeholder="0" required />
+                        <input onChange={(e) => setPrice(e.target.value)} value={price} className="w-full border border-stone-800 p-2 rounded-none" type="number" placeholder="0" required />
                     </div>
                 </div>
                 <button className="bg-green text-ivory w-full py-2" type="submit">Add Product</button>

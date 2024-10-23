@@ -11,7 +11,15 @@ export default {
         brand: ['migha'],
         main: ['Lato']
       },
+      height: {
+        'mobile': 'calc(100vh - 122px)',
+        'desktop': 'calc(100vh - 84px)',
+      },
       minHeight: {
+        'mobile': 'calc(100vh - 122px)',
+        'desktop': 'calc(100vh - 84px)',
+      },
+      maxHeight: {
         'mobile': 'calc(100vh - 122px)',
         'desktop': 'calc(100vh - 84px)',
       },

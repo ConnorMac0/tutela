@@ -60,7 +60,7 @@ const List = ({token}) => {
     },[])
 
     return (
-        <div>
+        <div className="p-5">
             <div className="flex flex-col gap-2">
                 <div className="hidden md:grid grid-cols-5 p-1 items-center">
                     <b></b>
@@ -71,15 +71,27 @@ const List = ({token}) => {
                 </div>
             </div>
             {
-                list.map((item,index)=> (
-                    <div className="grid grid-cols-5 py-5 items-center border-t-2 border-green" key={index}>
-                        <img className="w-12 md:w-14" src={item.image[0]} alt="" />
-                        <p>{item.name}</p>
-                        <p>{currency}{item.price}.00</p>
-                        <p>{item.size}</p>
-                        <button onClick={()=>removeProduct(item._id)}><i class="fa-solid fa-trash text-right"></i></button>
-                    </div>
-                ))
+                list.map((item,index)=> {
+                    if (index === 0) {
+                        return (
+                            <div className="grid grid-cols-5 py-5 items-center md:border-t-2 md:border-green" key={index}>
+                                <img className="w-12 md:w-14" src={item.image[0]} alt="" />
+                                <p>{item.name}</p>
+                                <p>{currency}{item.price}.00</p>
+                                <p>{item.size}</p>
+                                <button onClick={()=>removeProduct(item._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                            </div>
+                            )
+                    } else {
+                        return (
+                            <div className="grid grid-cols-5 py-5 items-center border-t-2 border-green" key={index}>
+                                <img className="w-12 md:w-14" src={item.image[0]} alt="" />
+                                <p>{item.name}</p>
+                                <p>{currency}{item.price}.00</p>
+                                <p>{item.size}</p>
+                                <button onClick={()=>removeProduct(item._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                            </div>)}
+                })
             }
         </div>
     )
