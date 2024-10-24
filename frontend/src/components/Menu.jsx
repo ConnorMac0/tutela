@@ -4,13 +4,14 @@ import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
 
-    const { isOpen, toggleMenu, token, setToken, setCartItems } = useContext(ShopContext);
+    const { isOpen, toggleMenu, token, setToken, setCartItems, navigate } = useContext(ShopContext);
 
     const logout = () => {
         setCartItems({});
         toggleMenu();
         localStorage.removeItem('token');
         setToken('');
+        navigate('/');
     }
 
     return (

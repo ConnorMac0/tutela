@@ -25,7 +25,7 @@ function PlaceOrder() {
   }
 
   const onSubmitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
 
       let orderItems = [];
@@ -48,11 +48,11 @@ function PlaceOrder() {
         amount: getCartTotal() + shippingFee,
       }
 
-      const response = await axios.post(backendURL + '/api/order/paypal', orderData, { headers: { token } });
+      const response = await axios.post(backendURL + '/api/order/stripe', orderData, { headers: { token } });
       
       if (response.data.success) {
-        setCartItems({});
-        navigate('/orders');
+        const {session_url} = response.data;
+        window.location.replace(session_url);
       } else {
         toast.error(response.data.message, {
           position: "top-center"
