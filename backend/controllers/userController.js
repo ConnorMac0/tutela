@@ -3,10 +3,6 @@ import validator from "validator";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET)
-}
-
 // Route for user login
 const loginUser = async (req, res) => {
 
@@ -24,7 +20,7 @@ const loginUser = async (req, res) => {
 
         if (isMatch) {
 
-            const token = createToken(user._id);
+            const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
             res.json({ success: true, token });
 
         } else {
@@ -69,7 +65,7 @@ const registerUser = async (req, res) => {
 
         const user = await newUser.save()
 
-        const token = createToken(user._id)
+        const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
 
         res.json({ success: true, token })
 
@@ -82,7 +78,7 @@ const registerUser = async (req, res) => {
 }
 
 // Route for admin login
-const adminLogin = async (req, res) => {
+const oldAdminLogin = async (req, res) => {
 
     try {
 
@@ -101,4 +97,61 @@ const adminLogin = async (req, res) => {
 
 }
 
-export { loginUser, registerUser, adminLogin }
+const adminLogin = async (req, res) => {
+    try {
+
+        const { email, password } = req.body;
+
+        // checking if user exists
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            return res.json({ success: false, message: "Invalid email" })
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (isMatch) {
+
+            if (user.role === 'admin') {
+                const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
+                res.json({ success: true, token });
+            } else {
+                res.json({ success: false, message: "User does not have admin privileges" })
+            }
+
+        } else {
+            res.json({ success: false, message: "Invalid password" })
+        }
+
+    } catch (error) {
+
+    }
+}
+
+// function for listing users
+const listUsers = async (req, res) => {
+
+    try {
+
+        const users = await userModel.find({});
+        res.json({ success: true, users })
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+
+}
+
+// function for removing users
+const removeUser = async (req, res) => {
+    try {
+        await userModel.findByIdAndDelete(req.body.id)
+        res.json({ success: true, message: "User Removed" })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+}
+
+export { loginUser, registerUser, adminLogin, listUsers, removeUser }

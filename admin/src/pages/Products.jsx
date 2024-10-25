@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
 
-const List = ({token}) => {
+const Products = ({token}) => {
 
     const [list, setList] = useState([])
 
@@ -97,4 +97,4 @@ const List = ({token}) => {
     )
 }
 
-export default List;
+export default Products;

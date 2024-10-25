@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Add from './pages/Add';
-import List from './pages/List';
+import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
@@ -16,7 +16,7 @@ import Users from './pages/Users';
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const currency = '$';
 
-function App() {
+const App = () => {
 
   const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
 
@@ -42,16 +42,16 @@ function App() {
         ? <Login setToken={setToken}/>
         :
         <>
-          <Menu isOpen={isOpen} toggleMenu={toggleMenu} setToken={logout}/>
+          <Menu isOpen={isOpen} toggleMenu={toggleMenu} logout={logout}/>
           <div>
-            <Navbar setToken={logout}/>
+            <Navbar logout={logout}/>
             <div className='flex min-h-mobile md:min-h-desktop w-full'>
               <Sidebar />
               <div className='w-full md:w-[82%]'>
                 <Routes>
                   <Route path='/' element={<Dashboard token={token}/>} />
                   <Route path='/add' element={<Add token={token}/>} />
-                  <Route path='/products' element={<List token={token}/>} />
+                  <Route path='/products' element={<Products token={token}/>} />
                   <Route path='/orders' element={<Orders token={token}/>} />
                   <Route path='/users' element={<Users token={token}/>} />
                 </Routes>
@@ -64,4 +64,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
