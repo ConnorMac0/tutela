@@ -14,7 +14,7 @@ function Navbar() {
                 </button>
             </div>
             <NavLink className='w-full md:w-1/3 font-brand text-5xl justify-center flex' onClick={()=>{if (isOpen) { toggleMenu() }}} to='/'>TUTELA</NavLink>
-            <div className='hidden md:flex w-1/3 justify-end pr-8'><NavLink to='/cart'>CART({getCartCount()})</NavLink></div>
+            <div className='hidden md:flex w-1/3 justify-end pr-8'><NavLink to='/cart' onClick={()=>{if (isOpen) { toggleMenu() }}}>CART({getCartCount()})</NavLink></div>
         </div>
     )
 }

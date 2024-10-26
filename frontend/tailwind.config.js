@@ -8,7 +8,7 @@ export default {
         'ivory': '#FFFFF0'
       },
       fontFamily: {
-        main: ['uncage'],
+        main: ['Lato'],
         brand: ['migha'],
       },
       minHeight: {

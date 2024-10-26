@@ -73,21 +73,28 @@ const Users = ({ token }) => {
                 list.map((user, index) => {
                     if (index === 0) {
                         return (
-                            <div className="grid grid-cols-4 py-5 items-center md:border-t-2 md:border-green" key={index}>
-                                <p>{user.name}</p>
-                                <p>{user.email}</p>
-                                <p>{user.role}</p>
-                                <button onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                            <div className="flex md:block justify-between">
+                                <div className="flex flex-col md:grid grid-cols-4 py-5 md:items-center md:border-t-2 md:border-green" key={index}>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Name:</b></p><p>{user.name}</p></span>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Email:</b></p><p>{user.email}</p></span>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Role:</b></p><p>{user.role}</p></span>
+                                    <button className="hidden md:block" onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                                </div>
+                                <button className="md:hidden" onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
                             </div>
                         )
                     } else {
                         return (
-                            <div className="grid grid-cols-4 py-5 items-center border-t-2 border-green" key={index}>
-                                <p>{user.name}</p>
-                                <p>{user.email}</p>
-                                <p>{user.role}</p>
-                                <button onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
-                            </div>)
+                            <div className="flex md:block justify-between md:items-center border-t-2 border-green">
+                                <div className="flex flex-col md:grid grid-cols-4 py-5" key={index}>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Name: </b></p><p>{user.name}</p></span>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Email: </b></p><p>{user.email}</p></span>
+                                    <span className="flex gap-2"><p className="flex md:hidden"><b>Role: </b></p><p>{user.role}</p></span>
+                                    <button className="hidden md:block" onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                                </div>
+                            <button className="md:hidden" onClick={() => removeUser(user._id)}><i className="fa-solid fa-trash text-right"></i></button>
+                        </div>
+                            )
                     }
                 })
             }

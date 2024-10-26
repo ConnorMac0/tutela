@@ -27,8 +27,8 @@ const Menu = () => {
                             <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
                             :
                             <div className='flex flex-col gap-5'>
-                                <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/orders'>My Orders</NavLink>
-                                <button onClick={() => logout()} className='hover:text-gray-800 w-0'>Logout</button>
+                                <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/orders'>MY ORDERS</NavLink>
+                                <button onClick={() => logout()} className='hover:text-gray-800 w-0'>LOGOUT</button>
                             </div>
                         }
                     </div>
@@ -45,8 +45,8 @@ const Menu = () => {
                             <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
                             :
                             <div className='flex flex-col gap-5'>
-                                <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/orders'>My Orders</NavLink>
-                                <button onClick={() => logout()} className='hover:text-gray-800 w-0'>Logout</button>
+                                <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/orders'>MY ORDERS</NavLink>
+                                <button onClick={() => logout()} className='hover:text-gray-800 w-0'>LOGOUT</button>
                             </div>
                         }
                     </div>

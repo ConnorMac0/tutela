@@ -40,7 +40,7 @@ const Verify = () => {
 
     return (
         <div>
-            Verify
+            Verifying Payment
         </div>
     )
 }

@@ -32,11 +32,12 @@ const Cart = () => {
         
         return(
           <div key={index} className='flex'>
-            <div className='flex gap-6 py-4 pl-10 w-full'>
-              <img className='w-16 md:w-32 object-scale-down' src={productData.image[0]}/>
-              <div className='flex items-center justify-between w-full'>
-                <span className='pl-10'><p className='text-md'>{productData.name}</p><p className='text-xs'>size: {productData.size}</p></span>
-                <span className='pr-10'><p className='text-md'>{currency}{productData.price}</p><button onClick={()=>removeItem(productData._id, productData.size)} className='text-xs'>remove</button></span>
+            <div className='flex py-4 w-full'>          
+              <div className='flex items-center justify-around w-full'>
+                <img className='w-16 md:w-32 object-scale-down' src={productData.image[0]}/>
+                <span className='flex flex-col gap-2 justify-center items-center'><p className='text-md md:text-xl'>{productData.name}</p><p className='text-xs md:text-base'>Size: {productData.size}</p></span>
+                <p className='text-md md:text-xl'>{currency}{productData.price}</p>
+                <button onClick={()=>removeItem(productData._id, productData.size)} className='text-xs md:text-base'><i className="fa-solid fa-trash text-right"></i></button>
               </div>
             </div>  
           </div>
@@ -45,7 +46,7 @@ const Cart = () => {
       <div className=''>
         <CartTotal/>
         <div className='flex w-full p-5 justify-center items-center align-items text-ivory'>
-                <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green rounded-full'>Checkout</button>
+              <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green w-1/2 md:w-1/5 rounded-full'>CHECKOUT</button>
             </div>
         </div>
     </div>

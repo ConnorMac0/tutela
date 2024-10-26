@@ -36,7 +36,7 @@ function Product() {
         <h1 className='text-4xl pt-5'>{productData.name}</h1>
         <p className='text-2xl p-2'>{currency}{productData.price}</p>
         <p className='text-xl pb-4'>{productData.size}</p>
-        <button onClick={() => {addToCart(productData._id, productData.size); navigate('/shop')}} className='text-xl bg-green px-10 pt-1 text-ivory rounded mb-5'>Add to Cart</button>
+        <button onClick={() => {addToCart(productData._id, productData.size); navigate('/shop')}} className='text-xl bg-green px-10 p-1 text-ivory rounded-full mb-5'>Add to Cart</button>
         <p className='hidden text-xl p-4 md:block'>{productData.description}</p>
       </div>
     </div>
