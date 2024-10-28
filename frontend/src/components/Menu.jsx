@@ -21,7 +21,7 @@ const Menu = () => {
                     }`}>
                     <div className='flex flex-col gap-5 pl-8 pt-[110px]'>
                         <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
-                        <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
+                        {/*<NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>*/}
                         <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
                         {token === '' ?
                             <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
@@ -39,7 +39,7 @@ const Menu = () => {
                     }`}>
                     <div className='flex flex-col gap-5 pl-8 pt-6'>
                         <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/shop'>SHOP</NavLink>
-                        <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>
+                        {/*<NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/about'>ABOUT</NavLink>*/}
                         <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/contact'>CONTACT</NavLink>
                         {token === '' ?
                             <NavLink onClick={() => toggleMenu()} className='hover:text-gray-800' to='/login'>LOGIN</NavLink>
