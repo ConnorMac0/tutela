@@ -4,7 +4,7 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-  const { products, currency, cartItems, removeItem, getCartCount, navigate } = useContext(ShopContext);
+  const { products, currency, cartItems, removeItem, getCartCount, navigate, token } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(()=>{
@@ -23,6 +23,14 @@ const Cart = () => {
     }
     setCartData(temp);
   },[cartItems])
+
+  const onClickHandler = () => {
+    if (!token) {
+      navigate('/checkout');
+    } else {
+      navigate('/place-order');
+    }
+  }
 
   return getCartCount() ? (
     <div className='bg-ivory min-h-full'>
@@ -46,7 +54,7 @@ const Cart = () => {
       <div className=''>
         <CartTotal/>
         <div className='flex w-full p-5 justify-center items-center align-items text-ivory'>
-              <button onClick={()=>navigate('/place-order')} className='px-6 py-2 bg-green w-1/2 md:w-1/5 rounded-full'>CHECKOUT</button>
+              <button onClick={()=>onClickHandler()} className='px-6 py-2 bg-green w-1/2 md:w-1/5 rounded-full'>CHECKOUT</button>
             </div>
         </div>
     </div>

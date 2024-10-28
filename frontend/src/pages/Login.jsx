@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 function Login() {
 
   const [currentState, setCurrentState] = useState('Login');
-  const { token, setToken, navigate, backendURL } = useContext(ShopContext);
-  const [name, setName] = useState('');
+  const { token, setToken, navigate, backendURL, getCartCount } = useContext(ShopContext);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,7 +18,7 @@ function Login() {
       if (currentState === 'Sign Up') {
 
         /* User Registration API handling */
-        const response = await axios.post(backendURL + '/api/user/register', { name, email, password })
+        const response = await axios.post(backendURL + '/api/user/register', { name: firstName + " " + lastName, email, password })
         if (response.data.success) {
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
@@ -49,7 +50,11 @@ function Login() {
 
   useEffect(()=>{
     if (token) {
-      navigate('/');
+      if (getCartCount() > 0) {
+        navigate('/place-order');
+      } else {
+        navigate('/');
+      }
     }
   }, [token])
 
@@ -58,7 +63,10 @@ function Login() {
       <div className="bg-green p-[8%] md:p-[5%] shadow-md shadow-black">
         <h1 className="pb-4 text-3xl text-center"><b>{currentState}</b></h1>
         <form onSubmit={onSubmitHandler} className='flex flex-col gap-4 w-full font-serif'>
-          {currentState === 'Login' ? '' : <input onChange={(e) => setName(e.target.value)} value={name} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="text" placeholder="Name" required />}
+          {currentState === 'Login' ? '' : 
+          <span className='flex gap-2'><input onChange={(e) => setFirstName(e.target.value)} value={firstName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="text" placeholder="First Name" required />
+          <input onChange={(e) => setLastName(e.target.value)} value={lastName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="text" placeholder="Last Name" required /></span>
+          }
           <input onChange={(e) => setEmail(e.target.value)} value={email} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="email" placeholder="User@email.com" required />
           <input onChange={(e) => setPassword(e.target.value)} value={password} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="password" placeholder="Password" required />
           {currentState === 'Sign Up' ? '' : <p className='text-xs'>Forgot password? </p>}

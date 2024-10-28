@@ -13,14 +13,19 @@ const loginUser = async (req, res) => {
         // checking if user exists
         const user = await userModel.findOne({ email });
         if (!user) {
-            return res.json({ success: false, message: "Invalid email" })
+            return res.json({ success: false, message: "Invalid email, please sign up" })
+        }
+
+        // check if user is guest
+        if (user.isGuest) {
+            return res.json({ success: false, message: "Invalid password, please sign up" })
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (isMatch) {
 
-            const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
+            const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
             res.json({ success: true, token });
 
         } else {
@@ -42,7 +47,9 @@ const registerUser = async (req, res) => {
         // checking if user already exists
         const exists = await userModel.findOne({ email });
         if (exists) {
-            return res.json({ success: false, message: "User already exists" })
+            if (!exists.isGuest) {
+                return res.json({ success: false, message: "User already exists" })
+            }
         }
 
         // validating email format & password
@@ -57,6 +64,22 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
 
+        // funcitonality to overwrite guest account if user creates permanent account
+        if (exists) {
+            const updateData = {
+                name,
+                email,
+                password: hashedPassword,
+                isGuest: false,
+            }
+
+            await userModel.findByIdAndUpdate(exists._id, updateData, { new: true });
+
+            const token = jwt.sign({ id: exists._id, role: exists.role }, process.env.JWT_SECRET);
+
+            return res.json({ success: true, token });
+        }
+
         const newUser = new userModel({
             name,
             email,
@@ -65,11 +88,9 @@ const registerUser = async (req, res) => {
 
         const user = await newUser.save()
 
-        const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
 
         res.json({ success: true, token })
-
-
 
     } catch (error) {
         console.log(error);
@@ -77,24 +98,43 @@ const registerUser = async (req, res) => {
     }
 }
 
-// Route for admin login
-const oldAdminLogin = async (req, res) => {
-
+// Function for creating temporary guest account
+const createGuest = async (req, res) => {
     try {
 
-        const { email, password } = req.body;
+        const { name, email } = req.body;
 
-        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            const token = jwt.sign(email + password, process.env.JWT_SECRET);
-            res.json({ success: true, token })
-        } else {
-            res.json({ success: false, message: "Invalid credentials" })
+        // checking if user already exists
+        const exists = await userModel.findOne({ email });
+        if (exists) {
+            if (!exists.isGuest) {
+                return res.json({ success: false, message: "User already exists, please login" })
+            }
         }
 
+        const tempUser = new userModel({
+            name,
+            email,
+            isGuest: true
+        });
+
+        const guestUser = await tempUser.save()
+
+        const tempToken = jwt.sign({ id: guestUser._id }, process.env.JWT_SECRET, { expiresIn: '12h' });
+
+        setTimeout(async () => { 
+            if (guestUser.isGuest) {
+                await userModel.deleteOne({ _id: guestUser._id });
+            }
+         }, 12 * 60 * 60 * 1000); // Deletes user after 12 hours
+
+        res.json({ success: true, tempToken })
+
+
     } catch (error) {
-
+        console.log(error);
+        res.json({ success: false, message: error.message })
     }
-
 }
 
 const adminLogin = async (req, res) => {
@@ -113,7 +153,7 @@ const adminLogin = async (req, res) => {
         if (isMatch) {
 
             if (user.role === 'admin') {
-                const token = jwt.sign({id:user._id, role: user.role}, process.env.JWT_SECRET);
+                const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
                 res.json({ success: true, token });
             } else {
                 res.json({ success: false, message: "User does not have admin privileges" })
@@ -154,4 +194,4 @@ const removeUser = async (req, res) => {
     }
 }
 
-export { loginUser, registerUser, adminLogin, listUsers, removeUser }
+export { loginUser, registerUser, adminLogin, listUsers, removeUser, createGuest }

@@ -14,7 +14,11 @@ const ShopContextProvider = (props) => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
+
+    useEffect(()=>{
+        localStorage.setItem('token', token)
+      },[token])
 
     const addToCart = async (itemId, size) => {
         let cartData = structuredClone(cartItems);

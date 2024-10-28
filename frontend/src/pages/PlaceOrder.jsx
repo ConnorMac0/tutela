@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 function PlaceOrder() {
 
-  const { getCartTotal, shippingFee, currency, navigate, products, cartItems, backendURL, token, setCartItems } = useContext(ShopContext);
+  const { getCartTotal, shippingFee, currency, products, cartItems, backendURL, token, setToken } = useContext(ShopContext);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -48,13 +48,45 @@ function PlaceOrder() {
         amount: getCartTotal() + shippingFee,
       }
 
-      const response = await axios.post(backendURL + '/api/order/stripe', orderData, { headers: { token } });
+      if (!token) {
+        try {
+          const guestResponse = await axios.post(backendURL + '/api/user/guest', { name: formData.firstName + " " + formData.lastName, email: formData.email });
+          
+          if (guestResponse.data.success) {
+            setToken(guestResponse.data.tempToken);
+            localStorage.setItem('token', guestResponse.data.tempToken);
+
+          } else {
+            toast.error(guestResponse.data.message, {
+              position: "top-center"
+            });
+            return null;
+          }
+
+        } catch (error) {
+          console.log(error);
+          toast.error(error.message, {
+            position: "top-center"
+          });
+        }
+      }
       
-      if (response.data.success) {
-        const {session_url} = response.data;
-        window.location.replace(session_url);
-      } else {
-        toast.error(response.data.message, {
+      try {
+
+        const response = await axios.post(backendURL + '/api/order/stripe', orderData, { headers: { token: localStorage.getItem('token') } });
+
+        if (response.data.success) {
+          const { session_url } = response.data;
+          window.location.replace(session_url);
+        } else {
+          toast.error(response.data.message, {
+            position: "top-center"
+          });
+        }
+        
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message, {
           position: "top-center"
         });
       }

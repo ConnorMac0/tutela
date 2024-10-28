@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Menu from './components/Menu'
 import Verify from './pages/Verify'
+import Checkout from './pages/Checkout'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/orders' element={<Orders/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/verify' element={<Verify/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
           </Routes>
         </div>
         <Footer/>
