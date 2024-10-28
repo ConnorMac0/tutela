@@ -7,13 +7,13 @@ function Product() {
   const { productId } = useParams();
   const { products, currency, addToCart, navigate } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
-  const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
 
   const fetchProductData = async () => {
     products.map((product) => {
       if (product._id === productId) {
         setProductData(product);
-        setImage(product.image[0]);
+        setImages(product.image);
         return null;
       }
     })
@@ -23,12 +23,18 @@ function Product() {
     fetchProductData();
   }, [productId, products])
 
+  const [imageIndex, setImageIndex] = useState(0);
+
   return productData ? (
     <div className='flex flex-col md:flex-row min-h-custom'>
 
       {/*--- Product Images ---*/}
-      <div className='flex w-full max-h-custom justify-center'>
-        <img className='object-scale-down' src={image} />
+      <div className='flex w-full max-h-custom justify-center flex-col items-center'>
+        <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className='h-[400px] object-scale-down transition duratiion-500 ease-in-out cursor-pointer' src={images[imageIndex]} />
+        <div className='flex p-10'>
+          <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className={`w-12 object-scale-down cursor-pointer ${!imageIndex ? "border-2 border-green" : ""}`} src={images[0]} alt="" />
+          <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className={`w-12 object-scale-down cursor-pointer ${imageIndex ? "border-2 border-green" : ""} ${images.length < 2 ? "hidden" : ""}`} src={images[1]} alt="" />
+        </div>
       </div>
 
       {/*--- Product Details ---*/}

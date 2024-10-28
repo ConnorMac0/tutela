@@ -60,15 +60,15 @@ function Login() {
 
   return (
     <div className="flex min-h-custom justify-center items-center text-ivory">
-      <div className="bg-green p-[8%] md:p-[5%] shadow-md shadow-black">
+      <div className="bg-green m-5 p-[8%] md:p-[4%] shadow-md shadow-black">
         <h1 className="pb-4 text-3xl text-center"><b>{currentState}</b></h1>
         <form onSubmit={onSubmitHandler} className='flex flex-col gap-4 w-full font-serif'>
           {currentState === 'Login' ? '' : 
-          <span className='flex gap-2'><input onChange={(e) => setFirstName(e.target.value)} value={firstName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="text" placeholder="First Name" required />
-          <input onChange={(e) => setLastName(e.target.value)} value={lastName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="text" placeholder="Last Name" required /></span>
+          <span className='flex gap-2'><input onChange={(e) => setFirstName(e.target.value)} value={firstName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black rounded-none" type="text" placeholder="First Name" required />
+          <input onChange={(e) => setLastName(e.target.value)} value={lastName} className="w-full border border-stone-800 py-2 px-4 text-sm text-black rounded-none" type="text" placeholder="Last Name" required /></span>
           }
-          <input onChange={(e) => setEmail(e.target.value)} value={email} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="email" placeholder="User@email.com" required />
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className="w-full border border-stone-800 py-2 px-4 text-sm text-black" type="password" placeholder="Password" required />
+          <input onChange={(e) => setEmail(e.target.value)} value={email} className="w-full border border-stone-800 py-2 px-4 text-sm text-black rounded-none" type="email" placeholder="User@email.com" required />
+          <input onChange={(e) => setPassword(e.target.value)} value={password} className="w-full border border-stone-800 py-2 px-4 text-sm text-black rounded-none" type="password" placeholder="Password" required />
           {currentState === 'Sign Up' ? '' : <p className='text-xs'>Forgot password? </p>}
           <button className="w-full py-2 bg-black text-white rounded-sm md:rounded-none" type="submit">{currentState === 'Login' ? 'Login' : 'Sign Up'}</button>
         </form>
