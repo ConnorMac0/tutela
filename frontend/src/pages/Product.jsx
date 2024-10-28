@@ -30,7 +30,7 @@ function Product() {
 
       {/*--- Product Images ---*/}
       <div className='flex w-full max-h-custom justify-center flex-col items-center'>
-        <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className='h-[400px] object-scale-down transition duratiion-500 ease-in-out cursor-pointer' src={images[imageIndex]} />
+        <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className='h-[400px] object-scale-down cursor-pointer' src={images[imageIndex]} />
         <div className='flex p-10'>
           <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className={`w-12 object-scale-down cursor-pointer ${!imageIndex ? "border-2 border-green" : ""}`} src={images[0]} alt="" />
           <img onClick={()=>setImageIndex((prevIndex) => (prevIndex + 1) % images.length)} className={`w-12 object-scale-down cursor-pointer ${imageIndex ? "border-2 border-green" : ""} ${images.length < 2 ? "hidden" : ""}`} src={images[1]} alt="" />
