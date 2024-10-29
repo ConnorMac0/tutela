@@ -36,11 +36,11 @@ const Login = ({ setToken }) => {
                 <form onSubmit={onSubmitHandler}>
                     <div className="w-full py-2">
                         <p className="text-md">Email</p>
-                        <input onChange={(e) => setEmail(e.target.value)} className="w-full border border-stone-800 p-2 text-sm" type="email" value={email} placeholder="user@email.com" required />
+                        <input onChange={(e) => setEmail(e.target.value)} className="w-full border border-stone-800 p-2 text-sm rounded-none" type="email" value={email} placeholder="user@email.com" required />
                     </div>
                     <div className="w-full py-2">
                         <p className="text-md">Password</p>
-                        <input onChange={(e) => setPasword(e.target.value)} className="w-full border border-stone-800 p-2 text-sm" type="password" value={password} placeholder="password" required />
+                        <input onChange={(e) => setPasword(e.target.value)} className="w-full border border-stone-800 p-2 text-sm rounded-none" type="password" value={password} placeholder="password" required />
                     </div>
                     <button className="w-full mt-3 py-2 bg-black text-white rounded-sm md:rounded-none" type="submit">Login</button>
                 </form>
