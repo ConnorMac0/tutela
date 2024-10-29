@@ -43,11 +43,15 @@ const App = () => {
         :
         <>
           <Menu isOpen={isOpen} toggleMenu={toggleMenu} logout={logout}/>
-          <div>
-            <Navbar logout={logout}/>
+          <div className='w-full'>
+            <div className='h-84 w-full fixed'>
+              <Navbar logout={logout}/>
+            </div>
             <div className='flex min-h-mobile md:min-h-desktop w-full'>
-              <Sidebar />
-              <div className='w-full md:w-[82%]'>
+              <div className='md:w-1/5 min-h-mobile md:min-h-desktop mt-[84px] md:fixed'>
+                <Sidebar />
+              </div>
+              <div className='w-full md:w-4/5 mt-[84px] md:ml-auto'>
                 <Routes>
                   <Route path='/' element={<Dashboard token={token}/>} />
                   <Route path='/add' element={<Add token={token}/>} />

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
-        <div className="hidden md:flex md:flex-col bg-green min-h-desktop md:w-[18%] justify-between border-r-2 border-green">
+        <div className="hidden md:flex md:flex-col bg-green min-h-desktop md:w-full justify-between border-r-2 border-green">
             <div className="w-full">
                 <div className="flex flex-col w-full my-5">
                     <NavLink to='/' className="py-2 px-[20%] hover:bg-ivory"><span className="flex items-center justify-between"><i className="fa-solid fa-chart-line"></i>DASHBOARD</span></NavLink>

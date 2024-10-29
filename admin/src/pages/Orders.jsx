@@ -62,7 +62,7 @@ const Orders = ({ token }) => {
                                     <div className="flex items-center grid grid-cols-4 justify-between" key={index}>
                                         <img className="w-12 md:w-14" src={item.image[0]} alt="" />
                                         <p>{item.name}</p>
-                                        <p>{item.size}</p>
+                                        <p>Size: {item.size}</p>
                                         <p>{currency}{item.price}.00</p>
                                     </div>
                                 ))}
