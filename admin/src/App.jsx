@@ -51,7 +51,7 @@ const App = () => {
               <div className='md:w-1/5 min-h-mobile md:min-h-desktop mt-[84px] md:fixed'>
                 <Sidebar />
               </div>
-              <div className='w-full md:w-4/5 mt-[84px] md:ml-auto'>
+              <div className='w-full md:w-4/5 mt-[84px] md:ml-auto min-h-mobile md:min-h-desktop'>
                 <Routes>
                   <Route path='/' element={<Dashboard token={token}/>} />
                   <Route path='/add' element={<Add token={token}/>} />
