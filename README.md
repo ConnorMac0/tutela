@@ -25,11 +25,10 @@ This is a **Full-Stack eCommerce Website** built using the **MERN stack** (Mongo
 
 ## Tech Stack
 
-- **Frontend**: React.js, React Router, Axios, TailwindCSS (or CSS Modules)
+- **Frontend**: React.js, React Router, Axios, TailwindCSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (using Mongoose for ORM)
 - **Authentication**: JSON Web Tokens (JWT), bcrypt.js for password hashing
 - **Payment Gateway**: Stripe API
-- **State Management**: Redux (optional, for global state management)
 - **Admin Panel**: Custom admin dashboard built with React
 - **Deployment**: Docker for self-hosting, and deployment on cloud platforms (AWS, DigitalOcean, etc.)
