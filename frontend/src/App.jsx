@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Menu from './components/Menu'
 import Verify from './pages/Verify'
 import Checkout from './pages/Checkout'
+import dotenv from 'dotenv'
 
 function App() {
 

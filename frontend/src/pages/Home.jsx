@@ -16,7 +16,7 @@ function Home() {
       <div>
         <div className='border-t-2 border-ivory text-center py-5'>
           <h2 className='text-2xl py-2 px-2'>The Mission</h2>
-          <p className='text-md py-2 px-2'>kbveakjbje ekajfsbvilaenvlkn qkbejvak bek jkn svjbk vb kkcnsdkfvk jbvl avjba kejvb kahbvj aebv kbjdbvkjsbkv</p>
+          <p className='text-md py-2 px-2'>Tutela means protection in latin. Our users are meant to feel invincible as they wear our unique, 1 of 1 pieces.</p>
         </div>
         <div className='border-t-2 border-ivory'>
           <video loop muted autoPlay src={assets.video1} playsInline/>
