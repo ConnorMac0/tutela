@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Verify = () => {
 
-    const { navigate, token, setCartItems, backendURL } = useContext(ShopContext);
+    const { navigate, token, setCartItems, backendURL, getUserCart} = useContext(ShopContext);
     const [searchParams, setSearchParams] = useSearchParams();
 
     const success = searchParams.get('success');
@@ -23,6 +23,7 @@ const Verify = () => {
                 setCartItems({});
                 navigate('/orders');
             } else {
+                getUserCart(localStorage.getItem('token'));
                 navigate('/cart');
             }
 
