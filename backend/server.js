@@ -18,8 +18,8 @@ connectDB()
 connectCloudinary()
 
 const options = {
-    key: fs.readFileSync('backend/ssl/origin.key'),
-    cert: fs.readFileSync('backend/ssl/origin.pem'),
+    key: fs.readFileSync('./ssl/origin.key'),
+    cert: fs.readFileSync('./ssl/origin.pem'),
   };
 
 // Middleware
