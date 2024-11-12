@@ -138,4 +138,4 @@ const updateStatus = async (req, res) => {
 
 }
 
-export { placeOrderStripe, allOrders, userOrders, updateStatus, verifyPayment };
+export { placeOrderStripe, allOrders, userOrders, updateStatus };
