@@ -10,7 +10,7 @@ import orderRouter from './routes/orderRoute.js'
 import stripeWebhookRouter from './routes/stripeWebhookRoute.js'
 
 // App config
-const https = require('https');
+const https = await import('https');
 const app = express()
 const port = process.env.PORT || 8080
 connectDB()
