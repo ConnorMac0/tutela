@@ -11,6 +11,7 @@ import stripeWebhookRouter from './routes/stripeWebhookRoute.js'
 
 // App config
 const https = await import('https');
+const fs = await import('fs');
 const app = express()
 const port = process.env.PORT || 8080
 connectDB()
