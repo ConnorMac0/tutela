@@ -58,7 +58,7 @@ const placeOrderStripe = async (req, res) => {
             line_items,
             metadata: {
                 userId: userId,
-                orderId: newOrder._id,
+                orderId: `${newOrder._id}`,
             },
             mode: 'payment',
         })
