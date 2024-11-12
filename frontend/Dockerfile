@@ -19,6 +19,8 @@ RUN npm run build
 # Stage-2: Serve with Nginx
 FROM nginx:alpine
 
+COPY ./nginx/ssl /etc/nginx/ssl/
+
 # Copy the static files from the builder stage to the Nginx folder
 COPY --from=builder /tutela/dist /usr/share/nginx/html
 
