@@ -21,6 +21,8 @@ FROM nginx:alpine
 
 COPY ./nginx/ssl /etc/nginx/ssl/
 
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
 # Copy the static files from the builder stage to the Nginx folder
 COPY --from=builder /tutela/dist /usr/share/nginx/html
 
