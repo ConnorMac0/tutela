@@ -16,15 +16,15 @@ connectDB()
 connectCloudinary()
 
 // Middleware
-app.use(express.json())
-app.use(cors())
 
+app.use(cors())
+app.use('/api/stripe-webhook', stripeWebhookRouter)
+app.use(express.json())
 // API endpoints
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
-app.use('/api/stripe-webhook', stripeWebhookRouter)
 
 
 app.get('/',(req,res)=>{

@@ -1,6 +1,12 @@
+import orderModel from '../models/orderModel.js'
+import Stripe from 'stripe'
+
+// stripe checkout gateway
+//const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SANDBOX_KEY);
 const endpointSecret = process.env.WEB_HOOK_SECRET;
 
-const verifyPayment = () => {
+const verifyPayment = async (req, res) => {
     try {
         
         let event = req.body;
@@ -23,21 +29,15 @@ const verifyPayment = () => {
     
         // Handle the event
         switch (event.type) {
-            case 'payment_intent.succeeded':
-                const paymentIntentSucceeded = event.data.object;
-                console.log(`PaymentIntent for ${paymentIntentSucceeded.amount} was successful!`);
-                // Then define and call a method to handle the successful payment intent.
-                // handlePaymentIntentSucceeded(paymentIntent);
-                console.log(paymentIntentSucceeded);
-    
+            case 'checkout.session.completed':
+                const sessionCompleted = event.data.object;
+
+                handleOrder(sessionCompleted);
                 break;
-            case 'payment_intent.payment_failed':
-                const paymentIntentFailed = event.data.object;
-                console.log(`PaymentIntent for ${paymentIntentFailed.amount} failed!`);
-                // Then define and call a method to handle the successful payment intent.
-                // handlePaymentIntentSucceeded(paymentIntent);
-                console.log(paymentIntentFailed);
-    
+            case 'checkout.session.expired':
+                const sessionExpired = event.data.object;
+
+                handleOrder(sessionExpired);
                 break;
             default:
                 // Unexpected event type
@@ -47,6 +47,17 @@ const verifyPayment = () => {
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: error.message })
+    }
+}
+
+const handleOrder = async (session) => {
+    if (session.payment_status === 'paid') {
+        console.log(`Order ${session.metadata.orderId} successfully paid`);
+        await orderModel.findByIdAndUpdate(session.metadata.orderId, { payment: true });
+        await userModel.findByIdAndUpdate(session.metadata.userId, { cartData: {} });
+    } else {
+        console.log(`Order ${session.metadata.orderId} failed`);
+        await orderModel.findByIdAndDelete(session.metadata.orderId);
     }
 }
 

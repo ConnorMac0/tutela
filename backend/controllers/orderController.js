@@ -56,6 +56,10 @@ const placeOrderStripe = async (req, res) => {
             success_url: `${origin}/verify?success=true&orderId=${newOrder._id}`,
             cancel_url: `${origin}/verify?success=false&orderId=${newOrder._id}`,
             line_items,
+            metadata: {
+                userId: userId,
+                orderId: newOrder._id,
+            },
             mode: 'payment',
         })
 
@@ -68,26 +72,26 @@ const placeOrderStripe = async (req, res) => {
 
 }
 
-const verifyPayment = async (req, res) => {
-    const { orderId, success, userId } = req.body;
+// const verifyPayment = async (req, res) => {
+//     const { orderId, success, userId } = req.body;
 
-    try {
+//     try {
 
-        if (success === "true") {
-            await orderModel.findByIdAndUpdate(orderId, { payment: true });
-            await userModel.findByIdAndUpdate(userId, { cartData: {} });
+//         if (success === "true") {
+//             await orderModel.findByIdAndUpdate(orderId, { payment: true });
+//             await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
-            res.json({ success: true });
-        } else {
-            await orderModel.findByIdAndDelete(orderId);
-            res.json({ success: false });
-        }
+//             res.json({ success: true });
+//         } else {
+//             await orderModel.findByIdAndDelete(orderId);
+//             res.json({ success: false });
+//         }
 
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message })
-    }
-}
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: error.message })
+//     }
+// }
 
 // Orders data for admin panel
 const allOrders = async (req, res) => {

@@ -10,7 +10,7 @@ const Verify = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const success = searchParams.get('success');
-    const orderId = searchParams.get('orderId');
+    //const orderId = searchParams.get('orderId');
 
     const verifyPayment = async () => {
         try {
@@ -18,12 +18,17 @@ const Verify = () => {
                 return null;
             }
 
-            const response = await axios.post(backendURL + '/api/order/verifyPayment', { success, orderId }, { headers: { token } })
-            if (response.data.success) {
+            if (success === 'true') {
                 setCartItems({});
+                toast.error("Order Placed Successfully", {
+                    position: "top-center"
+                  });
                 navigate('/orders');
             } else {
                 getUserCart(localStorage.getItem('token'));
+                toast.error("Order Failed, try again", {
+                    position: "top-center"
+                  });
                 navigate('/cart');
             }
 
