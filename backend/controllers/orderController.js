@@ -6,8 +6,8 @@ const currency = 'usd';
 const shippingFee = 10;
 
 // stripe checkout gateway
-//const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const stripe = new Stripe(process.env.STRIPE_SANDBOX_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+//const stripe = new Stripe(process.env.STRIPE_SANDBOX_KEY);
 
 // Placing order using Stripe
 const placeOrderStripe = async (req, res) => {

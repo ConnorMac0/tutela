@@ -1,9 +1,10 @@
 import orderModel from '../models/orderModel.js'
+import userModel from '../models/userModel.js'
 import Stripe from 'stripe'
 
 // stripe checkout gateway
-//const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const stripe = new Stripe(process.env.STRIPE_SANDBOX_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+//const stripe = new Stripe(process.env.STRIPE_SANDBOX_KEY);
 const endpointSecret = process.env.WEB_HOOK_SECRET;
 
 const verifyPayment = async (req, res) => {
