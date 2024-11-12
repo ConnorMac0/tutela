@@ -10,10 +10,16 @@ import orderRouter from './routes/orderRoute.js'
 import stripeWebhookRouter from './routes/stripeWebhookRoute.js'
 
 // App config
+const https = require('https');
 const app = express()
 const port = process.env.PORT || 8080
 connectDB()
 connectCloudinary()
+
+const options = {
+    key: fs.readFileSync('backend/ssl/origin.key'),
+    cert: fs.readFileSync('backend/ssl/origin.pem'),
+  };
 
 // Middleware
 
@@ -28,7 +34,9 @@ app.use('/api/order', orderRouter)
 
 
 app.get('/',(req,res)=>{
-    res.send("API Working")
+    res.send("Server Is Running")
 })
 
-app.listen(port, ()=> console.log('Server started on PORT: '+ port))
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server is running on HTTPS port ${port}`);
+  });
