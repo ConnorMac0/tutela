@@ -17,6 +17,7 @@ const port = process.env.PORT || 8080
 connectDB()
 connectCloudinary()
 
+// Options for ssl certification
 const options = {
     key: fs.readFileSync('./ssl/origin.key'),
     cert: fs.readFileSync('./ssl/origin.pem'),
@@ -38,6 +39,7 @@ app.get('/',(req,res)=>{
     res.send("Server Is Running")
 })
 
+// Starts server using https
 https.createServer(options, app).listen(port, () => {
     console.log(`Server is running on HTTPS port ${port}`);
   });
